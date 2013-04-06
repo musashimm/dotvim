@@ -31,3 +31,6 @@
 [submodule "bundle/rspec"]
 	path = bundle/rspec
 	url = https://github.com/skwp/vim-rspec.git
+[submodule "bundle/unimpaired"]
+	path = bundle/unimpaired
+	url = https://github.com/tpope/vim-unimpaired.git

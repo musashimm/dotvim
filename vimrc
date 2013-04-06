@@ -78,6 +78,7 @@
 
   " Yank from the cursor to the end of the line, to be consistent with C and D.
   nnoremap Y y$
+  nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
   " Toggle search highlighting
   nmap <silent> <leader>/ :set invhlsearch<CR>
 
