@@ -25,3 +25,9 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = https://github.com/godlygeek/tabular.git
+[submodule "rspec"]
+	path = rspec
+	url = https://github.com/skwp/vim-rspec.git
+[submodule "bundle/rspec"]
+	path = bundle/rspec
+	url = https://github.com/skwp/vim-rspec.git
