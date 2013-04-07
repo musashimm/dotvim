@@ -52,15 +52,7 @@
   command! Q q
 
   nmap ,ew :e $MYVIMRC<cr>
-  nmap ,er :so $MYVIMRC<cr>
   nmap <space> :
-
-  nmap za :b#<cr>
-  nmap zz :bnext<cr>
-  nmap zx :bprev<cr>
-  nmap zd :bd<cr>
-  nmap zf :bd!<cr>
-  nmap zl :ls<cr>
 
   map <c-q> :NERDTreeToggle<cr>
 
@@ -86,15 +78,44 @@
   " Change Working Directory to that of the current file
   cmap cwd lcd %:p:h<cr>
   cmap cd. lcd %:p:h<cr>
-
+  
+  cmap <c-k> <c-p>
   " Adjust viewports to the same size
   map <Leader>= <C-w>=
 
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " ARROW KEYS ARE UNACCEPTABLE
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  map <Left> <Nop>
+  map <Right> <Nop>
+  map <Up> <Nop>
+  map <Down> <Nop>
+
+  " Move around splits with <c-hjkl>
+  nnoremap <c-j> <c-w>j
+  nnoremap <c-k> <c-w>k
+  nnoremap <c-h> <c-w>h
+  nnoremap <c-l> <c-w>l
+
+  command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  " RENAME CURRENT FILE
+  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+  function! RenameFile()
+      let old_name = expand('%')
+      let new_name = input('New file name: ', expand('%'), 'file')
+      if new_name != '' && new_name != old_name
+          exec ':saveas ' . new_name
+          exec ':silent !rm ' . old_name
+          redraw!
+      endif
+  endfunction
+  map <leader>n :call RenameFile()<cr>
 " }}}
 
 " Plugins {{{
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-  autocmd vimenter * if !argc() | NERDTree | endif
+" autocmd vimenter * if !argc() | NERDTree | endif
   let NERDTreeShowBookmarks=1
 "  }}}
 
@@ -132,8 +153,21 @@
   set statusline+=%4*\ 0x%04.4B\ 
 " }}}
 
-" Source the vimrc file after saving it
-if has("autocmd")
-  autocmd bufwritepost .vimrc source $MYVIMRC
-endif
+" Vimrc {{{ 
+  " Source the vimrc file after saving it
+  if has("autocmd")
+    autocmd bufwritepost .vimrc source $MYVIMRC
+  endif
+" }}}
 
+" Functions {{{
+  function! InsertTabWrapper()
+      let col = col('.') - 1
+      if !col || getline('.')[col - 1] !~ '\k'
+          return "\<tab>"
+      else
+          return "\<c-p>"
+      endif
+  endfunction
+  inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+" }}} 
