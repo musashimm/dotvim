@@ -61,6 +61,8 @@
 
   nmap <leader>l :set list!<cr>
 
+  map <leader>a :CommandT<cr>
+
   map <leader>c <c-_><c-_>
 
   nmap < <<
