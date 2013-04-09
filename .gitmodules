@@ -9,7 +9,7 @@
 	url = http://github.com/scrooloose/nerdtree.git
 [submodule "vim-coffee-script"]
 	path = bundle/vim-coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
+	url = http://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/tcomment_vim"]
 	path = bundle/tcomment_vim
 	url = http://github.com/tomtom/tcomment_vim.git
@@ -18,19 +18,22 @@
 	url = http://github.com/tpope/vim-pathogen.git
 [submodule "bundle/coffee-script"]
 	path = bundle/coffee-script
-	url = https://github.com/kchmck/vim-coffee-script.git
+	url = http://github.com/kchmck/vim-coffee-script.git
 [submodule "bundle/tcomment"]
 	path = bundle/tcomment
 	url = http://github.com/tomtom/tcomment_vim.git
 [submodule "bundle/tabular"]
 	path = bundle/tabular
-	url = https://github.com/godlygeek/tabular.git
+	url = http://github.com/godlygeek/tabular.git
 [submodule "rspec"]
 	path = rspec
-	url = https://github.com/skwp/vim-rspec.git
+	url = http://github.com/skwp/vim-rspec.git
 [submodule "bundle/rspec"]
 	path = bundle/rspec
-	url = https://github.com/skwp/vim-rspec.git
+	url = http://github.com/skwp/vim-rspec.git
 [submodule "bundle/unimpaired"]
 	path = bundle/unimpaired
-	url = https://github.com/tpope/vim-unimpaired.git
+	url = http://github.com/tpope/vim-unimpaired.git
+[submodule "bundle/easymotion"]
+	path = bundle/easymotion
+	url = https://github.com/Lokaltog/vim-easymotion.git

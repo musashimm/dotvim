@@ -117,6 +117,7 @@
 " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
 " autocmd vimenter * if !argc() | NERDTree | endif
   let NERDTreeShowBookmarks=1
+  let g:EasyMotion_leader_key = '<leader>'
 "  }}}
 
 " Bash mappings {{{
