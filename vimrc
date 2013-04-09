@@ -139,7 +139,7 @@
   "  filetype
   set statusline+=%1*\ %Y\ 
   "  filename
-  set statusline+=%1*\ %-52F\ 
+  set statusline+=%1*\ %-90.90F\ 
   "  read only idicator 
   set statusline+=%2*%-3r 
   "  caret type
