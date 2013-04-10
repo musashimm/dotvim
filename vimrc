@@ -61,7 +61,7 @@
 
   nmap <leader>l :set list!<cr>
 
-  map <leader>a :CommandT<cr>
+  map <c-a> :CommandT<cr>
 
   map <leader>c <c-_><c-_>
 
@@ -88,10 +88,30 @@
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " ARROW KEYS ARE UNACCEPTABLE
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  map <Left> <Nop>
-  map <Right> <Nop>
-  map <Up> <Nop>
-  map <Down> <Nop>
+  nnoremap <Left> <Nop>
+  nnoremap <Right> <Nop>
+  nnoremap <Up> <Nop>
+  nnoremap <Down> <Nop>
+  vnoremap <Left> <Nop>
+  vnoremap <Right> <Nop>
+  vnoremap <Up> <Nop>
+  vnoremap <Down> <Nop>
+  inoremap <Left> <Nop>
+  inoremap <Right> <Nop>
+  inoremap <Up> <Nop>
+  inoremap <Down> <Nop>
+  cnoremap <Left> <Nop>
+  cnoremap <Right> <Nop>
+  cnoremap <Up> <Nop>
+  cnoremap <Down> <Nop>
+
+  " center motion
+  nnoremap } }zz
+  nnoremap { {zz
+  
+  " make empty lines
+  nnoremap go o<up><esc>
+  nnoremap gO O<down><esc>
 
   " Move around splits with <c-hjkl>
   nnoremap <c-j> <c-w>j
