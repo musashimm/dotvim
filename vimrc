@@ -9,12 +9,9 @@
 
 " Look & Feel {{{
   colorscheme molokai
-  
-  set laststatus=2
-  
   set guifont=Monospace\ 12
-
   set previewheight=30
+  set wildignore=*roska*,*.swp,*~,*cache*
 " }}}
 
 " Folding {{{
@@ -146,6 +143,7 @@
 " }}}
 
 " Statusline {{{
+  set laststatus=2
   hi User1 guifg=#ffffff  guibg=#4E4EF3
   hi User2 guifg=#ffffff  guibg=#FF0000
   hi User3 guifg=#ffffff  guibg=#8C8CEE
