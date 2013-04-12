@@ -13,6 +13,8 @@
   set laststatus=2
   
   set guifont=Monospace\ 12
+
+  set previewheight=30
 " }}}
 
 " Folding {{{
@@ -46,64 +48,61 @@
 " }}}
 
 " Mappings {{{
+  nnoremap <space> :
+
   command! Wq wq
   command! WQ wq
   command! W w
   command! Q q
-
-  nmap ,ew :e $MYVIMRC<cr>
-  nmap <space> :
-
-  map <c-q> :NERDTreeToggle<cr>
-
-  map <c-0> :gt<cr>
-  map <c-9> :gT<cr>
-
-  nmap <leader>l :set list!<cr>
-
-  map <c-a> :CommandT<cr>
-
-  map <leader>c <c-_><c-_>
-
-  nmap < <<
-  nmap > >>
-  vmap < <gv
-  vmap > >gv
-
   " Yank from the cursor to the end of the line, to be consistent with C and D.
   nnoremap Y y$
-  nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-  " Toggle search highlighting
-  nmap <silent> <leader>/ :set invhlsearch<CR>
 
+  " Commands starting with comma
+  nnoremap ,ew :e $MYVIMRC<cr>
+  nnoremap ,g :Gstatus<cr>
+
+  " Commands starting with leader
+  nnoremap <leader>r :RunSpec<cr>
+  nnoremap <leader>l :set list!<cr>
+  nnoremap <leader>c <c-_><c-_>
+  nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+  " Adjust viewports to the same size
+  nnoremap <Leader>= <C-w>=
+  " Toggle search highlighting
+  nnoremap <silent> <leader>/ :set invhlsearch<CR>
+  
+  nnoremap <c-q> :NERDTreeToggle<cr>
+  nnoremap <c-0> :gt<cr>
+  nnoremap <c-9> :gT<cr>
+  nnoremap <c-a> :CommandT<cr>
+  " Command mode
+  cnoremap <c-k> <c-p>
+  cnoremap <c-h> <left>
+  cnoremap <c-j> <c-n>
+  cnoremap <c-l> <right>
   " Shortcuts
   " Change Working Directory to that of the current file
-  cmap cwd lcd %:p:h<cr>
-  cmap cd. lcd %:p:h<cr>
-  
-  cmap <c-k> <c-p>
-  " Adjust viewports to the same size
-  map <Leader>= <C-w>=
+  cnoremap cwd lcd %:p:h<cr>
+  cnoremap cd. lcd %:p:h<cr>
+
+  " Indent
+  nnoremap < <<
+  nnoremap > >>
+  vnoremap < <gv
+  vnoremap > >gv
+
+  " Buffers switching
+  nnoremap  <silent>   <tab>  :bnext<CR>
+  nnoremap  <silent> <s-tab>  :bprevious<CR>
+  nnoremap  <silent> <c-tab>  :bd<CR>
 
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " ARROW KEYS ARE UNACCEPTABLE
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  nnoremap <Left> <Nop>
-  nnoremap <Right> <Nop>
-  nnoremap <Up> <Nop>
-  nnoremap <Down> <Nop>
-  vnoremap <Left> <Nop>
-  vnoremap <Right> <Nop>
-  vnoremap <Up> <Nop>
-  vnoremap <Down> <Nop>
-  inoremap <Left> <Nop>
-  inoremap <Right> <Nop>
-  inoremap <Up> <Nop>
-  inoremap <Down> <Nop>
-  cnoremap <Left> <Nop>
-  cnoremap <Right> <Nop>
-  cnoremap <Up> <Nop>
-  cnoremap <Down> <Nop>
+  noremap <Left> <Nop>
+  noremap <Right> <Nop>
+  noremap <Up> <Nop>
+  noremap <Down> <Nop>
 
   " center motion
   nnoremap } }zz
@@ -194,3 +193,7 @@
   endfunction
   inoremap <tab> <c-r>=InsertTabWrapper()<cr>
 " }}} 
+
+" At last go to workspace
+cd ~/workspace
+
