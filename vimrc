@@ -153,8 +153,10 @@
   hi User5 guifg=#ffffff  guibg=#4E4EF3
   " reset
   set statusline=
+  " current working direcotry
+  set statusline+=%4*\ %{getcwd()}\ 
   " git status
-  set statusline=%#ErrorMsg#\ %{fugitive#statusline()}\ %#StatusLine#
+  set statusline+=%3*\ %{fugitive#statusline()}\ 
   " modify indicator
   set statusline+=%2*%-3m 
   "  filetype
