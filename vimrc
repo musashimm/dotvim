@@ -46,6 +46,8 @@
 
 " Mappings {{{
   nnoremap <space> :
+  " Quick escape to normal mode
+  inoremap jk <esc>
 
   command! Wq wq
   command! WQ wq
