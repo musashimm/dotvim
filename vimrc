@@ -99,10 +99,19 @@
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " ARROW KEYS ARE UNACCEPTABLE
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  noremap <Left> <Nop>
-  noremap <Right> <Nop>
-  noremap <Up> <Nop>
-  noremap <Down> <Nop>
+  map <Left> <Nop>
+  map <Right> <Nop>
+  map <Up> <Nop>
+  map <Down> <Nop>
+  cmap <Left> <Nop>
+  cmap <Right> <Nop>
+  cmap <Up> <Nop>
+  cmap <Down> <Nop>
+  vmap <Left> <Nop>
+  vmap <Right> <Nop>
+  vmap <Up> <Nop>
+  vmap <Down> <Nop>
+
 
   " center motion
   nnoremap } }zz
