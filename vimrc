@@ -164,6 +164,7 @@
 
 " Bash mappings {{{
   command! SendMail !~/bin/sendMail.sh %
+  command! -nargs=1 Rak !rak --nocolour <args>
 " }}}
 
 " Statusline {{{
