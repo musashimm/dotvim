@@ -53,33 +53,34 @@
   command! WQ wq
   command! W w
   command! Q q
+
   " Yank from the cursor to the end of the line, to be consistent with C and D.
   nnoremap Y y$
 
   " Commands starting with comma
   nnoremap ,ew :e $MYVIMRC<cr>
-  nnoremap ,g :Gstatus<cr>
 
   " Commands starting with leader
   nnoremap <leader>r :RunSpec<cr>
   nnoremap <leader>l :set list!<cr>
-  nnoremap <leader>c <c-_><c-_>
-  nnoremap <Leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+  nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+
   " Adjust viewports to the same size
-  nnoremap <Leader>= <C-w>=
+  nnoremap <leader>= <C-w>=
+
   " Toggle search highlighting
   nnoremap <silent> <leader>/ :set invhlsearch<CR>
-  
-  nnoremap <c-q> :NERDTreeToggle<cr>
+
+  " moving beetween tabs
   nnoremap <c-0> :gt<cr>
   nnoremap <c-9> :gT<cr>
-  nnoremap <c-a> :CommandT<cr>
+
   " Command mode
   cnoremap <c-k> <c-p>
   cnoremap <c-h> <left>
   cnoremap <c-j> <c-n>
   cnoremap <c-l> <right>
-  " Shortcuts
+
   " Change Working Directory to that of the current file
   cnoremap cwd lcd %:p:h<cr>
   cnoremap cd. lcd %:p:h<cr>
@@ -134,10 +135,22 @@
 " }}}
 
 " Plugins {{{
-" autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
-" autocmd vimenter * if !argc() | NERDTree | endif
+  " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
+  " autocmd vimenter * if !argc() | NERDTree | endif
   let NERDTreeShowBookmarks=1
   let g:EasyMotion_leader_key = '<leader>'
+
+  " Tcomment
+  nmap <leader>c <c-_><c-_>
+
+  " Fugitive
+  nnoremap ,g :Gstatus<cr>
+
+  " NERDTree
+  nnoremap <c-q> :NERDTreeToggle<cr>
+
+  " CommandT
+  nnoremap <c-a> :CommandT<cr>
 "  }}}
 
 " Bash mappings {{{
