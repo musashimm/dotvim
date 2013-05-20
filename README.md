@@ -8,3 +8,8 @@
     cd ~/.vim
     git submodule init
     git submodule update
+    cd bundle/commandt/ruby
+    ruby extconf.rb
+    make
+
+`

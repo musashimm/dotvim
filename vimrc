@@ -5,10 +5,15 @@
   syntax on
   filetype plugin indent on
   set hidden
+
+  set pastetoggle=<F2>
+  set nobackup
+  set noswapfile
+  runtime macros/matchit.vim
 " }}}
 
 " Look & Feel {{{
-  colorscheme molokai
+  colorscheme xoria256
   set guifont=Monospace\ 12
   set previewheight=30
   set wildignore=*roska*,*.swp,*~,*cache*
@@ -59,9 +64,10 @@
 
   " Commands starting with comma
   nnoremap ,ew :e $MYVIMRC<cr>
+  nnoremap ,ed :e config/deploy.rb<cr>
 
   " Commands starting with leader
-  nnoremap <leader>r :RunSpec<cr>
+  " nnoremap <leader>r :RunSpec<cr>
   nnoremap <leader>l :set list!<cr>
   nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
@@ -69,54 +75,35 @@
   nnoremap <leader>= <C-w>=
 
   " Toggle search highlighting
-  nnoremap <silent> <leader>/ :set invhlsearch<CR>
+  nnoremap <silent> ,/ :set invhlsearch<CR>
 
   " moving beetween tabs
   nnoremap <c-0> :gt<cr>
   nnoremap <c-9> :gT<cr>
 
   " Command mode
-  cnoremap <c-k> <c-p>
-  cnoremap <c-h> <left>
-  cnoremap <c-j> <c-n>
-  cnoremap <c-l> <right>
+  cnoremap <c-p> <up>
+  cnoremap <c-j> <down>
 
   " Change Working Directory to that of the current file
   cnoremap cwd lcd %:p:h<cr>
   cnoremap cd. lcd %:p:h<cr>
-
-  " Indent
-  nnoremap < <<
-  nnoremap > >>
-  vnoremap < <gv
-  vnoremap > >gv
 
   " Buffers switching
   nnoremap  <silent>   <tab>  :bnext<CR>
   nnoremap  <silent> <s-tab>  :bprevious<CR>
   nnoremap  <silent> <c-tab>  :bd<CR>
 
-  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  " ARROW KEYS ARE UNACCEPTABLE
-  """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-  map <Left> <Nop>
-  map <Right> <Nop>
-  map <Up> <Nop>
-  map <Down> <Nop>
-  cmap <Left> <Nop>
-  cmap <Right> <Nop>
-  cmap <Up> <Nop>
-  cmap <Down> <Nop>
-  vmap <Left> <Nop>
-  vmap <Right> <Nop>
-  vmap <Up> <Nop>
-  vmap <Down> <Nop>
-
+  " Arrow keys are unacceptable
+  nmap <Left> <Nop>
+  nmap <Right> <Nop>
+  nmap <Up> <Nop>
+  nmap <Down> <Nop>
 
   " center motion
   nnoremap } }zz
   nnoremap { {zz
-  
+
   " make empty lines
   nnoremap go o<up><esc>
   nnoremap gO O<down><esc>
@@ -126,6 +113,8 @@
   nnoremap <c-k> <c-w>k
   nnoremap <c-h> <c-w>h
   nnoremap <c-l> <c-w>l
+
+  map <c-e> <c-u>
 
   command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -147,60 +136,76 @@
   " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   " autocmd vimenter * if !argc() | NERDTree | endif
   let NERDTreeShowBookmarks=1
-  let g:EasyMotion_leader_key = '<leader>'
 
   " Tcomment
   nmap <leader>c <c-_><c-_>
+  vmap <leader>c <c-_><c-_>
 
   " Fugitive
   nnoremap ,g :Gstatus<cr>
 
   " NERDTree
-  nnoremap <c-q> :NERDTreeToggle<cr>
+  nnoremap <silent> ,q :NERDTreeToggle<cr>
 
   " CommandT
-  nnoremap <c-a> :CommandT<cr>
+  " nnoremap <c-a> :CommandT<cr>
+    nnoremap <silent> ,z :CommandT<CR>
+    nnoremap <silent> ,b :CommandTBuffer<CR>
 "  }}}
 
 " Bash mappings {{{
-  command! SendMail !~/bin/sendMail.sh %
   command! -nargs=1 Rak !rak --nocolour <args>
+  command! Rspec !rspec --no-colour
+  command! -nargs=* Mina !mina <args>
+  nnoremap ,r :Rspec<cr>
+
+  command! Yardoc !yardoc
+  nnoremap ,y :Yardoc<cr>
+  nnoremap <F3> :SaveAndSend<cr>
 " }}}
 
 " Statusline {{{
   set laststatus=2
-  hi User1 guifg=#ffffff  guibg=#4E4EF3
-  hi User2 guifg=#ffffff  guibg=#FF0000
-  hi User3 guifg=#ffffff  guibg=#8C8CEE
-  hi User4 guifg=#ffffff  guibg=#15155C
-  hi User5 guifg=#ffffff  guibg=#4E4EF3
+
+  hi MyDirectory guifg=#ffffff guibg=#4E4EF3
+  hi MyCurrentFile guifg=#ffffff guibg=#4E4EF3
+  hi MyGitStatus guifg=#000000 guibg=#fdfffd
+  hi MyWarning guifg=#ffffff guibg=#FF0000
+  hi MyParameters guifg=#ffffff guibg=#15159C
+  hi MyFileType guifg=#ffffff guibg=#800000
+
   " reset
-  set statusline=
+  set statusline=%#MyDirectory#
   " current working direcotry
-  set statusline+=%4*\ %{getcwd()}\ 
+  set statusline+=\ %-20.20{CurrentDirectory()}\ 
   " git status
-  set statusline+=%3*\ %{fugitive#statusline()}\ 
-  " modify indicator
-  set statusline+=%2*%-3m 
+  set statusline+=%#MyGitStatus#
+  set statusline+=\ %{fugitive#statusline()}\ 
   "  filetype
-  set statusline+=%1*\ %Y\ 
+  set statusline+=%#MyFileType#
+  set statusline+=\ %Y\ 
+  " modify indicator
+  set statusline+=%#MyWarning#
+  set statusline+=%-3m 
   "  filename
-  set statusline+=%1*\ %-90.90F\ 
+  set statusline+=%#MyCurrentFile#
+  set statusline+=\ %-50.50F\ 
   "  read only idicator 
-  set statusline+=%2*%-3r 
+  set statusline+=%#MyParameters#
+  set statusline+=%-3r 
   "  caret type
-  set statusline+=%3*\ %{&ff=='unix'?'\\n':(&ff=='mac'?'\\r':'\\r\\n')}\ 
+  set statusline+=\ %{&ff=='unix'?'\\n':(&ff=='mac'?'\\r':'\\r\\n')}\ 
   " file encoding
-  set statusline+=%3*\ %{&fenc!=''?&fenc:&enc}\ 
+  set statusline+=\ %{&fenc!=''?&fenc:&enc}\ 
   " line column
-  set statusline+=%4*\ Col:%c\ 
+  set statusline+=\ Col:%c\ 
   " line number
-  set statusline+=%4*\ Line:%l\ of\ %L\ 
+  set statusline+=\ Line:%l\ of\ %L\ 
   " char in hex under cursor
-  set statusline+=%4*\ 0x%04.4B\ 
+  set statusline+=\ 0x%04.4B\ 
 " }}}
 
-" Vimrc {{{ 
+" Vimrc {{{
   " Source the vimrc file after saving it
   if has("autocmd")
     autocmd bufwritepost .vimrc source $MYVIMRC
@@ -217,8 +222,14 @@
       endif
   endfunction
   inoremap <tab> <c-r>=InsertTabWrapper()<cr>
-" }}} 
+" }}}
 
-" At last go to workspace
-cd ~/workspace
+" The end {{{
+  " At last go to workspace if exists
+    let mydir = $HOME . "/workspace"
+    if isdirectory(mydir)
+      exe 'cd' mydir
+    endif
+" }}}
+
 
