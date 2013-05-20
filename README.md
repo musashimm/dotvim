@@ -3,13 +3,15 @@
 
     cd ~
     git clone https://github.com/musashimm/dotvim.git ~/.vim
-    gem install hpricot #for rspec
     ln -s ~/.vim/vimrc ~/.vimrc
     cd ~/.vim
     git submodule init
     git submodule update
-    cd bundle/commandt/ruby
+
+    # compile commandt
+    cd ~/.vim/bundle/commandt/ruby/command-t/
     ruby extconf.rb
     make
 
-`
+    # instal hpricot
+    gem install hpricot
