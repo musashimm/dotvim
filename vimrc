@@ -71,6 +71,9 @@
   nnoremap <leader>l :set list!<cr>
   nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
+  nnoremap <C-s> <esc>:w<CR>
+  inoremap <C-s> <esc>:w<CR>a
+
   " Adjust viewports to the same size
   nnoremap <leader>= <C-w>=
 
