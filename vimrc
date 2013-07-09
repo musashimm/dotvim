@@ -72,7 +72,7 @@
   nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
 
   nnoremap <C-s> <esc>:w<CR>
-  inoremap <C-s> <esc>:w<CR>a
+  inoremap <C-s> <esc>:w<CR>
 
   " Adjust viewports to the same size
   nnoremap <leader>= <C-w>=
@@ -154,6 +154,7 @@
   " nnoremap <c-a> :CommandT<cr>
     nnoremap <silent> ,z :CommandT<CR>
     nnoremap <silent> ,b :CommandTBuffer<CR>
+    nnoremap <silent> ,m :CommandTFlush<CR>
 "  }}}
 
 " Bash mappings {{{
