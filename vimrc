@@ -214,6 +214,7 @@
   " Source the vimrc file after saving it
   if has("autocmd")
     autocmd bufwritepost .vimrc source $MYVIMRC
+    autocmd BufWritePost * :normal :CommandTFlush
   endif
 " }}}
 
