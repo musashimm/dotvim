@@ -71,6 +71,8 @@
   nnoremap <leader>l :set list!<cr>
   nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
   nnoremap ,c :1,999bd<cr>
+  nnoremap <leader>w viwc
+  nnoremap <leader>q bvt_c
 
   nnoremap <C-s> <esc>:w<CR>
   inoremap <C-s> <esc>:w<CR>
