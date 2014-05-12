@@ -49,6 +49,8 @@
   set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 " }}}
 
+au BufNewFile,BufRead *.es6 set filetype=javascript
+
 " Mappings {{{
   nnoremap <space> :
   " Quick escape to normal mode
@@ -66,13 +68,13 @@
   nnoremap ,ew :e $MYVIMRC<cr>
   nnoremap ,ed :e config/deploy.rb<cr>
 
+  " Closes all buffers
+  nnoremap ,c :1,999bd<cr>
+
   " Commands starting with leader
   " nnoremap <leader>r :RunSpec<cr>
   nnoremap <leader>l :set list!<cr>
   nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-  nnoremap ,c :1,999bd<cr>
-  nnoremap <leader>w viwc
-  nnoremap <leader>q bvt_c
 
   nnoremap <C-s> <esc>:w<CR>
   inoremap <C-s> <esc>:w<CR>
@@ -174,12 +176,12 @@
 " Statusline {{{
   set laststatus=2
 
-  hi MyDirectory guifg=#ffffff guibg=#4E4EF3
+  hi MyDirectory guifg=#ffffff guibg=#666666
   hi MyCurrentFile guifg=#ffffff guibg=#4E4EF3
   hi MyGitStatus guifg=#000000 guibg=#fdfffd
   hi MyWarning guifg=#ffffff guibg=#FF0000
-  hi MyParameters guifg=#ffffff guibg=#15159C
-  hi MyFileType guifg=#ffffff guibg=#800000
+  hi MyParameters guifg=#ffffff guibg=#666666
+  hi MyFileType guifg=#ffffff guibg=#444444
 
   " reset
   set statusline=%#MyDirectory#
@@ -188,14 +190,14 @@
   " git status
   set statusline+=%#MyGitStatus#
   set statusline+=\ %{fugitive#statusline()}\ 
-  "  filetype
-  set statusline+=%#MyFileType#
-  set statusline+=\ %Y\ 
   " modify indicator
   set statusline+=%#MyWarning#
   set statusline+=%-3m 
+  "  filetype
+  set statusline+=%#MyFileType#
+  set statusline+=\ %Y\ 
   "  filename
-  set statusline+=%#MyCurrentFile#
+  " set statusline+=%#MyCurrentFile#
   set statusline+=\ %-50.50F\ 
   "  read only idicator 
   set statusline+=%#MyParameters#
