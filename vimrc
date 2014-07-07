@@ -75,7 +75,6 @@ au BufNewFile,BufRead *.es6 set filetype=javascript
   " nnoremap <leader>r :RunSpec<cr>
   nnoremap <leader>l :set list!<cr>
   nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
-  nnoremap <leader>a :split<cr>
 
   nnoremap <C-s> <esc>:w<CR>
   inoremap <C-s> <esc>:w<CR>
@@ -125,6 +124,9 @@ au BufNewFile,BufRead *.es6 set filetype=javascript
 
   map <c-e> <c-u>
 
+  nnoremap <F5> :enew<CR>i
+  nnoremap <F8> <esc>:bd!<CR>
+
   command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " RENAME CURRENT FILE
@@ -172,6 +174,7 @@ au BufNewFile,BufRead *.es6 set filetype=javascript
   command! Yardoc !yardoc
   nnoremap ,y :Yardoc<cr>
   nnoremap <F3> :SaveAndSend<cr>
+  nnoremap <F4> :ReformatXML<cr>
 " }}}
 
 " Statusline {{{
@@ -233,8 +236,19 @@ au BufNewFile,BufRead *.es6 set filetype=javascript
       endif
   endfunction
   inoremap <tab> <c-r>=InsertTabWrapper()<cr>
+
+  command! ReformatXML call s:ReformatXML()
+
+  function! s:ReformatXML()
+    set ft=xml
+    normal gg
+    %s/>\s*</>\r</g
+    normal gg=G
+  endfunction
+
 " }}}
 
+  nnoremap <silent> ,f :ReformatAndClean<cr>
 " The end {{{
   " At last go to workspace if exists
     let mydir = $HOME . "/workspace"
