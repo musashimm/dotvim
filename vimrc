@@ -75,6 +75,7 @@ au BufNewFile,BufRead *.es6 set filetype=javascript
   " nnoremap <leader>r :RunSpec<cr>
   nnoremap <leader>l :set list!<cr>
   nnoremap <leader>s :%s/\<<C-r><C-w>\>//g<Left><Left>
+  nnoremap <leader>a :split<cr>
 
   nnoremap <C-s> <esc>:w<CR>
   inoremap <C-s> <esc>:w<CR>
