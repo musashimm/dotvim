@@ -14,7 +14,7 @@
 
 " Look & Feel {{{
   colorscheme xoria256
-  set guifont=Monospace\ 12
+  set guifont=Monospace\ 13
   set previewheight=30
   set wildignore=*roska*,*.swp,*~,*cache*
 " }}}
@@ -128,6 +128,11 @@ au BufNewFile,BufRead *.es6 set filetype=javascript
   nnoremap <F8> <esc>:bd!<CR>
 
   command! InsertTime :normal a<c-r>=strftime('%F %H:%M:%S.0 %z')<cr>
+
+  nnoremap <C-y> "+y
+  vnoremap <C-y> "+y
+  nnoremap <C-p> "+gP
+  vnoremap <C-p> "+gP
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
   " RENAME CURRENT FILE
   """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
