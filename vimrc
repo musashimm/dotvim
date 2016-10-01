@@ -66,7 +66,7 @@ call vundle#end()            " required
   colorscheme xoria256
   set guifont=Monospace\ 13
   set previewheight=30
-  set wildignore=*roska*,*.swp,*~,*cache*,*node_modules*
+  set wildignore=*roska*,*.swp,*~,*cache*,*node_modules*,*public/spree*
 " }}}
 
 " Folding {{{
@@ -202,7 +202,7 @@ au BufNewFile,BufRead *.vue set filetype=vue
 " Plugins {{{
   " autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTreeType") && b:NERDTreeType == "primary") | q | endif
   " autocmd vimenter * if !argc() | NERDTree | endif
-  let NERDTreeShowBookmarks=1
+  " let NERDTreeShowBookmarks=1
 
   " Tcomment
   nmap <leader>c <c-_><c-_>
@@ -212,13 +212,14 @@ au BufNewFile,BufRead *.vue set filetype=vue
   nnoremap ,g :Gstatus<cr>
 
   " NERDTree
-  nnoremap <silent> ,q :NERDTreeToggle<cr>
+  " nnoremap <silent> ,q :NERDTreeToggle<cr>
 
   " CommandT
   " nnoremap <c-a> :CommandT<cr>
-    nnoremap <silent> ,z :CommandT<CR>
-    nnoremap <silent> ,b :CommandTBuffer<CR>
-    nnoremap <silent> ,m :CommandTFlush<CR>
+  let CommandTMatchWindowReverse=0
+  nnoremap <silent> ,z :CommandT<CR>
+  nnoremap <silent> ,b :CommandTBuffer<CR>
+  nnoremap <silent> ,m :CommandTFlush<CR>
 "  }}}
 
 " Bash mappings {{{
