@@ -1,17 +1,28 @@
 
-## Personal VIM configuration
+# Personal VIM configuration
+
+## Configure Vundle
 
     cd ~
     git clone https://github.com/musashimm/dotvim.git ~/.vim
-    ln -s ~/.vim/vimrc ~/.vimrc
-    cd ~/.vim
-    git submodule init
-    git submodule update
+    ln -fs ~/.vim/vimrc ~/.vimrc
+    git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+    
+## Install Plugins
 
-    # compile commandt
-    cd ~/.vim/bundle/commandt/ruby/command-t/
+From Vim execute:
+    
+    :PluginInstall
+    
+## Compile command-t
+
+Check ruby version Vim is bundled to. From Vim execute command:
+
+    :ruby puts "#{RUBY_VERSION}-p#{RUBY_PATCHLEVEL}"
+    
+After you set proper version of ruby using (rvm or rbenv), issue commands:
+
+    cd ~/.vim/bundle/command-t/ruby/command-t
     ruby extconf.rb
     make
-
-    # instal hpricot
-    gem install hpricot
+    
