@@ -35,6 +35,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'posva/vim-vue'
 Plugin 'godlygeek/tabular'
+Plugin 'slim-template/vim-slim.git'
 
 
 
@@ -101,6 +102,7 @@ call vundle#end()            " required
 
 au BufNewFile,BufRead *.es6 set filetype=javascript
 au BufNewFile,BufRead *.vue set filetype=vue
+au BufNewFile,BufRead *.slim set filetype=slim
 
 " Mappings {{{
   nnoremap <space> :
@@ -279,7 +281,7 @@ au BufNewFile,BufRead *.vue set filetype=vue
   " Source the vimrc file after saving it
   if has("autocmd")
     autocmd bufwritepost .vimrc source $MYVIMRC
-    autocmd BufWritePost * :normal :CommandTFlush
+    autocmd bufwritepost * :CommandTFlush
   endif
 " }}}
 

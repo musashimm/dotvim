@@ -1,3 +1,8 @@
 let g:netrw_dirhistmax  =10
-let g:netrw_dirhist_cnt =1
+let g:netrw_dirhist_cnt =6
 let g:netrw_dirhist_1='/home/soldier/workspace/meb_crm/app/views/shared'
+let g:netrw_dirhist_2='/home/soldier/workspace/tendom'
+let g:netrw_dirhist_3='/home/soldier/workspace/ebook'
+let g:netrw_dirhist_4='/home/soldier/workspace/franklin'
+let g:netrw_dirhist_5='/home/soldier/workspace/middleman-related/mysite2'
+let g:netrw_dirhist_6='/home/soldier/workspace/middleman-related/mysite2/source'
