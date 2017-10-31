@@ -67,7 +67,7 @@ call vundle#end()            " required
   colorscheme xoria256
   set guifont=Monospace\ 13
   set previewheight=30
-  set wildignore=*roska*,*.swp,*~,*cache*,*node_modules*,*public/spree*
+  set wildignore=*roska*,*.swp,*~,*cache*,*node_modules*,*public/spree*,*rdoc*,support/backups/*
 " }}}
 
 " Folding {{{
