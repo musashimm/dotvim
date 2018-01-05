@@ -219,6 +219,7 @@ au BufNewFile,BufRead *.slim set filetype=slim
   " CommandT
   " nnoremap <c-a> :CommandT<cr>
   let CommandTMatchWindowReverse=0
+  let CommandTMaxHeight=0
   nnoremap <silent> ,z :CommandT<CR>
   nnoremap <silent> ,b :CommandTBuffer<CR>
   nnoremap <silent> ,m :CommandTFlush<CR>
