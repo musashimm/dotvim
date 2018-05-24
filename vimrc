@@ -100,9 +100,11 @@ call vundle#end()            " required
   set listchars=tab:›\ ,trail:•,extends:#,nbsp:. " Highlight problematic whitespace
 " }}}
 
-au BufNewFile,BufRead *.es6 set filetype=javascript
-au BufNewFile,BufRead *.vue set filetype=vue
-au BufNewFile,BufRead *.slim set filetype=slim
+au BufWrite,BufRead *.es6 set filetype=javascript
+au BufWrite,BufRead *.vue set filetype=vue
+au BufWrite,BufRead *.coffee set filetype=coffee
+au BufWrite,BufRead *.slim set filetype=slim   
+au BufWrite,BufRead *.md set filetype=markdown
 
 " Mappings {{{
   nnoremap <space> :
